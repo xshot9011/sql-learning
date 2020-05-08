@@ -63,3 +63,52 @@ DELETE FROM [table] WHERE [condition];
 ```
 
 note: working complete without where condition becareful
+
+## aggregation funtion
+
+### counting 
+
+```bash
+SELECT COUNT([field]) FROM [table] WHERE [condition]];
+```
+
+### average 
+
+```bash
+SELECT AVG([field]) FROM [table] WHERE [condition] ;
+```
+
+### sum
+
+```bash
+SELECT SUM([field]) FROM [table] WHERE [condition] ;
+```
+
+### max, min
+
+```bash
+SELECT [max, min]([field]) FROM [table] WHERE [condition] ;
+```
+
+### group by
+
+note: combination between some fields and values
+
+```bash
+SELECT [fieds or others] FROM [table] GROUP BY [fields];
+```
+
+like you group the information depend on it's value on the specific column
+
+### having
+
+note: where count(filed) [<, >, =, ...] [value] is error
+where cannot user with aggreate function
+
+```bash
+SELECT [...] FROM [table] GROUP BY [fields] HAVING [aggreate funtion or fields or as name][operation][value] ORDER BY [field];
+```
+
+ถ้าแปลเป็นไทยก็จัดกลุ่มโดยมีค่าในfields นี้เป็นหลัก โดยกลุ่มเหล่านั้นมีค่า ...ตามเงื่อนไข... เรียงโดย...
+
+note: if statement has GROUPBY, HAVING always follow the it
