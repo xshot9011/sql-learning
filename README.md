@@ -116,3 +116,47 @@ SELECT [...] FROM [table] GROUP BY [fields] HAVING [aggreate funtion or fields o
 ถ้าแปลเป็นไทยก็จัดกลุ่มโดยมีค่าในfields นี้เป็นหลัก โดยกลุ่มเหล่านั้นมีค่า ...ตามเงื่อนไข... เรียงโดย...
 
 note: if statement has GROUPBY, HAVING always follow the it
+
+## sql operator
+
+### not 
+
+put it after where state ment 
+not x = value  === x != value
+
+### in
+
+```bash
+SELECT [...] FROM [table] WHERE [field] in(value1, value2, ...);
+```
+
+note: not in 
+
+### like 
+
+```bash
+SELECT [...] FROM [table] WHERE [field] like '[.0.]';
+```
+
+%c = everything end with 'c'
+c% = everything start with 'c'
+
+### between 
+
+```bash
+SELECT [...] FROM [table] WHERE [field] betwwen [value] and [value];
+```
+
+### is null
+
+```bash
+SELECT [...] FROM [table] WHERE [field] is NULL;
+```
+
+'' and NULL is dif, NULL is absolutely emtry
+
+### and or
+
+```bash
+SELECT [...] FROM [table] WHERE [condition] [and, or] [condition];
+```
