@@ -1,5 +1,9 @@
 # SQL command
 
+## order
+
+select ... from ... where ... group by ... having ... order by ... limit ... 
+
 ## select
 
 ### normal 
