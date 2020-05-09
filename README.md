@@ -2,7 +2,7 @@
 
 ## order
 
-select ... from ... where ... group by ... having ... order by ... limit ... 
+select ... case ... from ... where ... group by ... having ... order by ... limit ... 
 
 ## select
 
@@ -159,4 +159,81 @@ SELECT [...] FROM [table] WHERE [field] is NULL;
 
 ```bash
 SELECT [...] FROM [table] WHERE [condition] [and, or] [condition];
+```
+
+## join
+
+การเอาข้อมูล 2 ก้อนมารวมกัน
+
+note: if name of fields are the same or similar or '1, you can use [table].[field] instead
+
+ืnote: table สามารถเป็นอันเดียวกันได้ สิ่งที่สำคัญคืออะไรอยู่หลังพวงมาลัย ถุ้ยยย หลัง on อย่าลืมเปลี่ยนชื่อหลัง table ที่ 2 ไม่งั้นมันจะงงว่าเอา field นั้นมาจาก table ไหน
+
+### inner join
+
+the intersection between A and B
+
+```bash
+SELECT [fields]
+FROM [table_a] INNER JOIN [table_b] ON [table_a].[field] = [table_b].[field]
+ORDER BY [field];
+```
+
+### left (outer) join
+
+เอาข้อมูล a มารวมกับข้อมูล b โดยข้อมูล a ต้องครบทุกตัว ข้อมูล b ถ้ารวมได้ก็จะรวม
+
+```bash
+SELECT [fields]
+FROM [table_a] LEFT JOIN [table_b] ON [table_a].[field] = [table_b].[field]
+ORDER BY [field];
+```
+
+### right (outer) join
+
+เอาข้อมูล a มารวมกับข้อมูล b โดยข้อมูล b ต้องครบทุกตัว ข้อมูล a ถ้ารวมได้ก็จะรวม
+
+```bash
+SELECT [fields]
+FROM [table_a] RIGHT JOIN [table_b] ON [table_a].[field] = [table_b].[field]
+ORDER BY [field];
+```
+
+### full (outer) join
+
+เอาข้อมูล a มารวมกับข้อมูล b โดยข้อมูล a, b ต้องครบทุกตัวถ้าสามารถรวมได้ก็จะรวม
+ไม่ค่อยแนะนำ เพราะเรื่องข้อมูลขยะ
+
+```bash
+SELECT [fields]
+FROM [table_a] FULL OUTER JOIN [table_b] ON [table_a].[field] = [table_b].[field]
+ORDER BY [field];
+```
+
+## many condition
+
+### case
+
+```bash
+SELECT [fields], 
+CASE
+WHEN [condtions] THEN [output value]
+WHEN [conditions] THEN [output value]
+ELSE [output value]
+END AS [new_field_name]
+FROM [table]
+```
+
+note: new_field_name will be the output value for each records mathcing condition
+
+### sub queries
+
+```bash
+SELECT [fields], 
+FROM [table],
+WHERE [fields] IN (SELECT [field] FROM [TABLE] WHERE [condition])
+/* or */
+SELECT [field] = (SELECT [field] FROM [table] WHERE [condition]), [others fields]
+FROM [table]
+WHERE [condition]
 ```
